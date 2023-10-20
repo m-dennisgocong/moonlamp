@@ -46,9 +46,9 @@ const Features = () => {
                 <Image src={moonlamp} width={500} height={500} alt="moonlamp"/>
             </div>
             <div>
-                <ul className="space-y-10">
+                <ul className="space-y-10 md:text-right">
                     <li>
-                        <div className="flex gap-2 items-center text-xl font-bold text-dark">
+                        <div className="flex gap-2 items-center text-xl font-bold text-dark md:justify-end">
                             <h3>Child Safety</h3>
                             <div>
                                 <AiFillSafetyCertificate size={25}/>
@@ -57,7 +57,7 @@ const Features = () => {
                         <p>Designed with care, our moonlamp ensures a gentle glow free of harmful elements, keeping young ones enchanted and secure.</p>
                     </li>
                     <li>
-                        <div className="flex gap-2 items-center text-xl font-bold text-dark">
+                        <div className="flex gap-2 items-center text-xl font-bold text-dark md:justify-end">
                             <h3>100% Wireless</h3>
                             <div>
                                 <RiWirelessChargingFill size={25}/>
@@ -66,7 +66,7 @@ const Features = () => {
                         <p>Illuminate spaces without cords; our moonlamp is sleek and clutter-free.</p>
                     </li>
                     <li>
-                        <div className="flex gap-2 items-center text-xl font-bold text-dark">
+                        <div className="flex gap-2 items-center text-xl font-bold text-dark md:justify-end">
                             <h3>Bright & Dim Mode</h3>
                             <div>
                                 <FaRegLightbulb size={25}/>
