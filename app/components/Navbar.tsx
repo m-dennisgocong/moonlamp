@@ -2,19 +2,27 @@
 import {useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 import { FiMenu } from 'react-icons/fi';
 import { MdClose } from 'react-icons/md';
-import { BsCart4, BsFillBagHeartFill } from 'react-icons/bs'
-import Cart from "./Cart"; 
-import { useCartStore } from "@/store/useCartStore";
-
+import { AiOutlineShoppingCart, AiOutlineHeart, AiOutlineUser } from 'react-icons/ai'
 import logo from '@/public/moonlamplogo.png'
 
+import Cart from "./Cart"; 
+
+import { useCartStore } from "@/store/useCartStore";
+import { UserButton, useUser } from "@clerk/nextjs";
+import { User } from "@clerk/nextjs/server";
+
 const Navbar = () => {
+    
     const [openMobileMenu, setOpenMobileMenu] = useState(false);
     const mobileMenuHandler = () => setOpenMobileMenu(!openMobileMenu);
     const [isScrolling, setIsScrolling] = useState(false);
+
     const cartStore = useCartStore();
+
+    const {isSignedIn, user} = useUser();
 
     useEffect(() => {
         if(openMobileMenu){
@@ -41,9 +49,9 @@ const Navbar = () => {
       <nav className={`py-4 w-full ${isScrolling ? "fixed top-0 bg-white shadow-lg z-10" : "relative"}`}>
           <div className="w-[89%] m-auto flex justify-between items-center max-w-[1400px]">
                 <a href="/">
-                    <Image src={logo} width={200} height={200} alt="logo"/>
+                    <Image src={logo} width={150} height={150} alt="logo"/>
                 </a>
-                <ul className={`md:flex items-center gap-8 text-gray-600 md:static absolute ${openMobileMenu ? "top-12 py-10 w-full bg-secondary left-0 text-center space-y-10 text-white drop-shadow-lg z-20 font-medium" : "hidden"}`}>
+                <ul className={`md:flex items-center gap-8 text-gray-600 md:static absolute ${openMobileMenu ? "max-md:top-12 max-md:py-10 max-md:w-full max-md:bg-secondary max-md:left-0 max-md:text-center max-md:space-y-10 max-md:text-white max-md:drop-shadow-lg max-md:z-20 max-md:font-medium" : "hidden"}`}>
                     <li>
                         <Link href={"#shop"} onClick={() => setOpenMobileMenu(false)}>Shope</Link>
                     </li>
@@ -62,11 +70,18 @@ const Navbar = () => {
                </ul>
                <div className="flex gap-4 items-center text-dark ml-auto md:ml-0">
                     <div onClick={() => cartStore.toggleCart()}>
-                        <BsCart4 size={20}/>
+                        <AiOutlineShoppingCart size={20}/>
                     </div>
                     <div>
-                        <BsFillBagHeartFill size={20}/>
+                        <AiOutlineHeart size={20}/>
                     </div>
+                    {!isSignedIn ? 
+                        (<Link href={"/sign-in"}><AiOutlineUser size={20}/></Link>) 
+                        : 
+                        (<div>
+                            <UserButton afterSignOutUrl="/"/>
+                        </div>)    
+                    }
                 </div>
                 <div className="md:hidden ml-4" onClick={mobileMenuHandler}>
                     {openMobileMenu ? <MdClose size={25}/> : <FiMenu size={25}/>}
