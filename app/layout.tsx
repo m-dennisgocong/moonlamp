@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from './components/Navbar'
 import Hydration from './components/Hydration'
 import Footer from './components/Footer'
+import { ClerkProvider } from '@clerk/nextjs'
 
 const poppins = Poppins({ 
   subsets: ['latin'],
@@ -21,14 +22,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={poppins.className}>
-        <Hydration>
-          <Navbar/>
-          {children}
-          <Footer/>
-        </Hydration>  
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={poppins.className}>
+          <Hydration>
+            <Navbar/>
+            {children}
+            <Footer/>
+          </Hydration>  
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
