@@ -9,8 +9,8 @@ const Hero = () => {
                 <h1 className="text-5xl font-bold text-dark">Illuminate Your World: Discover Moonlamp Magic</h1>
                 <p className="mt-5 text-secondary">With every purchase of our moonlamp 10% of sale will go to donation. We love to give back to the community</p>
                 <div className="flex gap-5 mt-8">
-                    <button className="bg-primary text-white py-2 px-5 rounded-xl">More Info</button>
-                    <button className="bg-secondary text-white py-2 px-5 rounded-xl">Buy Now</button>
+                    <a href={"#features"} className="bg-primary text-white py-2 px-5 rounded-xl">More Info</a>
+                    <a href={"#product"} className="bg-secondary text-white py-2 px-5 rounded-xl">Buy Now</a>
                 </div>
             </div>
             <div className="flex lg:justify-end justify-center items-center">
