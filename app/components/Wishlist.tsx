@@ -1,4 +1,5 @@
 import { useWishlistStore } from "@/store/useWishListStore";
+import AddToCartButton from "./UI/AddToCartButton";
 import Image from "next/image";
 
 const WishList = () => {
@@ -14,13 +15,18 @@ const WishList = () => {
           <button onClick={() => wishlistStore.toggleWishList()}>Back to store</button>
           {wishlistStore.onWishList === "wishlist" && wishlistStore.wishList.length > 0 ? (
             <>
-              <h1>Hello</h1>
-              <span>You have {wishlistStore.wishList.length} items in your wishlist</span>
+              {/* <h1>Hello</h1> */}
+              {/* <span>You have {wishlistStore.wishList.length} items in your wishlist</span> */}
               {wishlistStore.wishList.map((product) => (
                 <div key={product.id}>
                   <Image src={product.image} alt={product.name} width={100} height={100} />
                   <h1>{product.name}</h1>
-                  <button onClick={() => wishlistStore.removeFromWishlist({ ...product })}>Remove</button>
+                  <div className="flex gap-2 md:gap-4 items-center">
+                    <button onClick={() => wishlistStore.removeFromWishlist({ ...product })} className="border rounded-md py-2 px-6">Remove</button>
+                    <button onClick={() => wishlistStore.removeFromWishlist({ ...product })}>
+                      <AddToCartButton product={product}/>
+                    </button>
+                  </div>
                 </div>
               ))}
             </>
