@@ -22,7 +22,7 @@ const WishList = () => {
                   <Image src={product.image} alt={product.name} width={100} height={100} />
                   <h1>{product.name}</h1>
                   <div className="flex gap-2 md:gap-4 items-center">
-                    <button onClick={() => wishlistStore.removeFromWishlist({ ...product })} className="border rounded-md py-2 px-6">Remove</button>
+                    <button onClick={() => wishlistStore.removeFromWishlist({ ...product })} className="bg-red-100 rounded-md py-2 px-6">Remove</button>
                     <button onClick={() => wishlistStore.removeFromWishlist({ ...product })}>
                       <AddToCartButton product={product}/>
                     </button>
