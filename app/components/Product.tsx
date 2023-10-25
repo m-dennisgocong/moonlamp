@@ -20,7 +20,7 @@ const Product = ({name, image, unit_amount, id, description, quantity} : Product
         enter: {opacity: 1, y: 0, scale: 1, transition: {duration:0.4}},
     }
     return (
-      <section className="py-20">
+      <section id="product" className="py-20">
         <div className="w-[98%] m-auto max-w-[1400px] grid grid-cols-1 md:grid-cols-2 items-center gap-5">
             <div className="flex gap-4 items-center">
                 <div className="flex flex-col gap-4">
