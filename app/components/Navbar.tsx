@@ -9,8 +9,10 @@ import { AiOutlineShoppingCart, AiOutlineHeart, AiOutlineUser } from 'react-icon
 import logo from '@/public/moonlamplogo.png'
 
 import Cart from "./Cart"; 
+import WishList from "./Wishlist";
 
 import { useCartStore } from "@/store/useCartStore";
+import { useWishlistStore } from "@/store/useWishListStore";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { User } from "@clerk/nextjs/server";
 
@@ -21,7 +23,7 @@ const Navbar = () => {
     const [isScrolling, setIsScrolling] = useState(false);
 
     const cartStore = useCartStore();
-
+    const wishlistStore = useWishlistStore();
     const {isSignedIn, user} = useUser();
 
     useEffect(() => {
@@ -72,7 +74,7 @@ const Navbar = () => {
                     <div onClick={() => cartStore.toggleCart()}>
                         <AiOutlineShoppingCart size={20}/>
                     </div>
-                    <div>
+                    <div onClick={() => wishlistStore.toggleWishList()} className="cursor-pointer">
                         <AiOutlineHeart size={20}/>
                     </div>
                     {!isSignedIn ? 
@@ -88,6 +90,7 @@ const Navbar = () => {
                 </div>
             </div>
             {!cartStore.isOpen && <Cart/>}
+            {!wishlistStore.openWishlist && <WishList />}
       </nav>
     )
 }
