@@ -66,7 +66,7 @@ const Product = ({name, image, unit_amount, id, description, quantity} : Product
                 </p>
                 <div className="flex justify-center items-center gap-5">
                     <AddToCartButton product={productData}/>
-                    <AddToWishlistButton />
+                    <AddToWishlistButton product={productData}/>
                 </div>
             </div>
         </div>
