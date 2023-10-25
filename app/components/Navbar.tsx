@@ -71,8 +71,13 @@ const Navbar = () => {
                     </li>
                </ul>
                <div className="flex gap-4 items-center text-dark ml-auto md:ml-0">
-                    <div onClick={() => cartStore.toggleCart()}>
+                    <div onClick={() => cartStore.toggleCart()} className="relative">
                         <AiOutlineShoppingCart size={20} className="cursor-pointer"/>
+                        {cartStore.cart.length > 0 && (
+                            <span className="bg-primary text-white text-sm font-bold w-4 h-4 rounded-full absolute right-2 bottom-3 flex items-center justify-center">
+                                {cartStore.cart.length}
+                            </span>
+                        )}
                     </div>
                     <div onClick={() => wishlistStore.toggleWishList()} className="cursor-pointer">
                         <AiOutlineHeart size={20}/>
