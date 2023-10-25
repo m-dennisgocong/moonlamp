@@ -70,9 +70,9 @@ const Navbar = () => {
                         <Link href={"/orders"} onClick={() => setOpenMobileMenu(false)}>My Orders</Link>
                     </li>
                </ul>
-               <div className="flex gap-4 items-center text-dark ml-auto md:ml-0 cursor-pointer">
+               <div className="flex gap-4 items-center text-dark ml-auto md:ml-0">
                     <div onClick={() => cartStore.toggleCart()}>
-                        <AiOutlineShoppingCart size={20}/>
+                        <AiOutlineShoppingCart size={20} className="cursor-pointer"/>
                     </div>
                     <div onClick={() => wishlistStore.toggleWishList()} className="cursor-pointer">
                         <AiOutlineHeart size={20}/>
