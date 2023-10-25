@@ -80,7 +80,7 @@ const Navbar = () => {
                         )}
                     </div>
                     <div onClick={() => wishlistStore.toggleWishList()} className="cursor-pointer">
-                        <AiOutlineHeart size={20}/>
+                        <AiOutlineHeart size={20} fill={`${wishlistStore.wishList.length > 0 ? "red" : "black"}`}/>
                     </div>
                     {!isSignedIn ? 
                         (<Link href={"/sign-in"}><AiOutlineUser size={20}/></Link>) 
