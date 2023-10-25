@@ -70,7 +70,7 @@ const Navbar = () => {
                         <Link href={"/orders"} onClick={() => setOpenMobileMenu(false)}>My Orders</Link>
                     </li>
                </ul>
-               <div className="flex gap-4 items-center text-dark ml-auto md:ml-0">
+               <div className="flex gap-4 items-center text-dark ml-auto md:ml-0 cursor-pointer">
                     <div onClick={() => cartStore.toggleCart()}>
                         <AiOutlineShoppingCart size={20}/>
                     </div>
